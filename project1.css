@@ -1,0 +1,126 @@
+
+.content {
+    width: 100%;
+    height: 100%;
+    display: none;
+    position: relative;
+    background-color: #2d2d2d;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.content_h1{
+    height: 120px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    
+
+}
+.content_h1 h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 100px;
+    color: rgb(255, 255, 255);
+
+}
+
+.content .animation{
+    position: absolute;
+    height: 250px;
+    width: 200px;
+    left: 50%;
+    bottom: 350px;
+    transform: translateX(-50%);
+    --left: 0px;
+    transition: 1s;
+    z-index: 2;
+}
+.content .animation .can{
+   background: 
+   url(bg.png) var(--left) 0,
+   url(mockup.png);
+   background-size: auto 100%;
+   background-blend-mode: multiply;
+   width: 200px;
+   aspect-ratio: 2/4;
+   transition: 1s;
+   mask-image: url(mockup.png);
+   mask-size: auto 100%;
+}
+
+.content .animation :hover{
+ --left: -1250px;
+   rotate: Z -10deg;
+   transform: translateY(-20%);
+    background: 
+    url(bg2.png) var(--left) 0,
+   url(mockup.png);
+   background-size: auto 100%;
+   background-blend-mode: multiply;
+   width: 200px;
+   aspect-ratio: 2/4;
+   transition: 1s;
+   mask-image: url(mockup.png);
+   mask-size: auto 100%;
+   
+}
+ .content .rock1{
+    height: 100px;
+    width: 400px;
+    background-image: url(rock1.png);
+    background-blend-mode: multiply;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    left: 50%;
+    background-position:  center;
+    bottom: 120px;
+    transform: translateX(-50%);
+    transition: 1s;
+    z-index: 1;
+ }
+ .content .rock2{
+    height: 350px;
+    width: 450px;
+    background-image: url(rock2.png);
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-size: cover;
+    position: absolute;
+    bottom: 0;
+    transition: 1s;
+    z-index: 0;
+ }
+ .content .rock3{
+   
+    width: 400px;
+    height: 600px;
+    background-image: url(rock3.png);
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-size: contain;
+    position: absolute;
+    right:  -7%;
+    top: 30%;
+    transition: 1s;
+    z-index: 0;
+    rotate: Z -25deg;
+ }
+ .content:has(.animation:hover) .rock1{
+    transition: 1s;
+    bottom: 80px;
+ }
+ .content:has(.animation:hover) .rock2{
+    transition: 1s;
+    bottom: -5%;
+    transform: translateX(-10%);
+ }
+ .content:has(.animation:hover) .rock3{
+    transition: 1s;
+    top: 35%;
+    right: -10%;
+ }

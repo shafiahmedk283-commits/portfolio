@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe - Neon Theme</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0d0d0d;
+      color: #00f7ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      font-size: 50px;
+      color: #00f7ff;
+      text-shadow: 0 0 15px #00f7ff, 0 0 30px #00f7ff;
+      margin-bottom: 20px;
+    }
+
+    .display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      gap: 30px;
+    }
+
+    .player, .player1, .winner {
+      padding: 10px 20px;
+      border: 2px solid #00f7ff;
+      border-radius: 8px;
+      font-size: 20px;
+      text-shadow: 0 0 10px #00f7ff;
+      box-shadow: 0 0 15px #00f7ff inset, 0 0 15px #00f7ff;
+    }
+
+    .winner {
+      background: #111;
+      color: #00f7ff;
+      font-weight: bold;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .game {
+      display: grid;
+      grid-template-columns: repeat(3, 120px);
+      grid-template-rows: repeat(3, 120px);
+      gap: 15px;
+    }
+
+    .box {
+      background: #111;
+      border: 2px solid #00f7ff;
+      border-radius: 10px;
+      font-size: 60px;
+      font-weight: bold;
+      color: #00f7ff;
+      cursor: pointer;
+      text-shadow: 0 0 20px #00f7ff, 0 0 40px #00f7ff;
+      box-shadow: 0 0 15px #00f7ff, inset 0 0 15px #00f7ff;
+    }
+
+    .box:disabled {
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+
+    .newbtn {
+      grid-column: span 3;
+      margin-top: 20px;
+      padding: 15px;
+      background: #111;
+      border: 2px solid #00f7ff;
+      border-radius: 10px;
+      color: #00f7ff;
+      font-size: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      text-shadow: 0 0 20px #00f7ff;
+      box-shadow: 0 0 15px #00f7ff, inset 0 0 15px #00f7ff;
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 18px;
+      text-shadow: 0 0 10px #00f7ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>TIC TAC TOE</h1>
+  <div class="display">
+    <div class="player">Player O</div>
+    <div class="winner"><p class="msg"></p></div>
+    <div class="player1">Player X</div>
+  </div>
+  <div class="container">
+    <div class="game">
+      <button class="box"></button>
+      <button class="box"></button>
+      <button class="box"></button>
+      <button class="box"></button>
+      <button class="box"></button>
+      <button class="box"></button>
+      <button class="box"></button>
+      <button class="box"></button>
+      <button class="box"></button>
+      <button class="newbtn">NEW GAME</button>
+    </div>
+  </div>
+  <footer>Made By Shafi</footer>
+
+  <script>
+    let btns = document.querySelectorAll(".box");
+    let player = document.querySelector(".player");
+    let player1 = document.querySelector(".player1");
+    let msg = document.querySelector(".msg");
+    let newbtn = document.querySelector(".newbtn");
+    let O = true;
+
+    const winpatterns = [
+      [0,1,2],
+      [3,4,5],
+      [6,7,8],
+      [0,3,6],
+      [1,4,7],
+      [2,5,8],
+      [0,4,8],
+      [2,4,6],
+    ];
+
+    const resetgame = () => {
+      O = true;
+      enablebtns();
+      msg.innerText = "";
+    };
+
+    btns.forEach((box) => {
+      box.addEventListener("click", () => {
+        if(O) {
+          box.innerText = "O";
+          O = false;
+        } else {
+          box.innerText = "X";
+          O = true;
+        }
+        box.disabled = true;
+        checkwinner();
+      });
+    });
+
+    const disablebtns = () => {
+      for(let btn of btns) {
+        btn.disabled = true;
+      }
+    };
+
+    const enablebtns = () => {
+      for(let btn of btns) {
+        btn.disabled = false;
+        btn.innerText = "";
+      }
+    };
+
+    const showwinner = (winner) => {
+      msg.innerText = `Winner is ${winner}`;
+      disablebtns();
+    };
+
+    const checkwinner = () => {
+      for(let pattern of winpatterns) {
+        let pos1val = btns[pattern[0]].innerText;
+        let pos2val = btns[pattern[1]].innerText;
+        let pos3val = btns[pattern[2]].innerText;
+
+        if(pos1val != "" && pos2val != "" && pos3val != "") {
+          if(pos1val === pos2val && pos2val === pos3val) {
+            showwinner(pos1val);
+          }
+        }
+      }
+    };
+
+    newbtn.addEventListener("click", resetgame);
+  </script>
+</body>
+</html>

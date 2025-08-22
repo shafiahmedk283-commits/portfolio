@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Parallax Scrolling Website</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<header>
+  <a href="#" class="Logo">Logo</a>
+  <ul>
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Contact</a></li>
+    <li><a href="#">Settings</a></li>
+  </ul>
+</header>
+<section>
+  <img src="stars.png" id="stars" alt="Stars">
+  <img src="moon.png" id="moon" alt="moon">
+  <img src="mountains_behind.png" id="mountains_behind" alt="Mountains Behind">
+  <h2 id="text">PAKISTAN</h2>
+  <a href="#sec" id="btn-parallax">Explore</a>
+  <img src="mountains_front.png" id="mountains_front" alt="Mountains Front">
+  </section>
+<div class="sec" id="sec">
+  <h2>
+    <i>
+      PAKISTAN
+    </i>
+  </h2>
+  <img class="img_deg" src="file:///C:/Users/LAPTRADE/Desktop/PARALLEX%20WED/download.jpg">
+  <p>
+    <br>Country: Islamic Republic of Pakistan</br>
+    <br>Capital: Islamabad</br>
+    <br>Official Languages: Urdu (national language), English (official language for government and business)</br>
+    <br>Population: Over 225 million people (as of 2021)</br>
+    <br>Currency: Pakistani Rupee (PKR)</br>
+    <br>Pakistan is located in South Asia and shares borders with India, Afghanistan, Iran, and China.</br>
+    <br>The country has diverse landscapes, including mountains (such as the Himalayas and Karakoram ranges), fertile plains, deserts, and a long coastline along the Arabian Sea.</br>
+    <br>Pakistan gained independence from British rule on <u>August 14, 1947</u>, when it separated from Hindustan to form a separate Muslim-majority nation.</br>
+    <br>The culture of Pakistan is a blend of various regional influences, including the ancient Indus Valley Civilization, Islamic traditions, and Persian, Central Asian, and British colonial legacies.</br>
+    <br>Pakistan has a rich cultural heritage, including traditional music (such as Qawwali), dance (such as Bhangra), and a diverse cuisine.</br>
+    <br>The historical city of Lahore, with landmarks like the Badshahi Mosque, Lahore Fort, and Walled City.</br>
+    <br>The ancient archaeological site of Mohenjo-daro, a UNESCO World Heritage site, dating back to the Indus Valley Civilization.</br>
+    <br>The stunning mountain ranges, including K2 (the world's second-highest peak) and the Karakoram Highway, a scenic road connecting Pakistan to China.</br>
+    <br>The beautiful valleys of Swat, Hunza, and Neelum, known for their natural beauty and hospitality.</br>
+    <br>The architectural wonders of Islamabad, the modern capital city, including Faisal Mosque, Pakistan Monument, and Rawal Lake.</br>
+    <br>Pakistan's economy is the 24th largest in the world by purchasing power parity.</br>
+    <br>Major industries include textiles, agriculture, manufacturing, and services.</br>
+    <br>Pakistan is also known for its agricultural products, including cotton, wheat, rice, and fruits.</br>
+    <br>Cricket is the most popular sport in Pakistan, and the national cricket team has achieved international success, winning the ICC Cricket World Cup in 1992.</br>
+    <br>Field hockey is also popular, with Pakistan winning multiple Olympic and World Cup titles in the past.</br>
+  </p>
+</div>
+
+<script>
+  // Add your JavaScript code for the Parallax Scrolling Website section here
+  window.addEventListener('scroll', function() {
+    let value = window.scrollY;
+    let stars = document.getElementById('stars');
+    let moon = document.getElementById('moon');
+    let mountains_behind = document.getElementById('mountains_behind');
+    let text = document.getElementById('text');
+    let btn = document.getElementById('btn-parallax');
+    let mountains_front = document.getElementById('mountains_front');
+    let header = document.querySelector('header');
+
+    stars.style.left = value * 0.25 + 'px';
+    moon.style.top = value * 1.5 + 'px'; // Adjust the multiplier as needed
+    mountains_behind.style.top = value * 0.6 + 'px';
+    mountains_front.style.top = value * 0 + 'px';
+    text.style.marginRight = value * 4 + 'px';
+    text.style.marginTop = value * 1.5 + 'px';
+    btn.style.marginTop = value * 1.5 + 'px';
+    header.style.top = value * 0.5 + 'px'; // Adjust the multiplier as needed
+  });
+
+</script>
+</body>
+</html>
